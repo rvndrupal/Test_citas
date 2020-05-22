@@ -1,0 +1,198 @@
+Pasos de la instalaciónde Jenkins
+
+Curso Avanzado de testing  video 158
+
+1.-->Descargar java   https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+2.-->Instalar el paquete.
+
+3.-->Verificar  cmd    java -version
+
+
+4.-->Condigurar variable de java
+-->programas->java->jdk->bin-> copiar la ruta
+
+-->ir a variables de entorno -->Variables del sistema
+-->crear con nombre JAVA_HOME  --> PEGAR LA RUTA
+
+-->ir a la varibale path y configurar como en la imagen
+
+-->%JAVA_HOME%/bin;
+
+
+########### SEGUNDO PASO ##################
+
+1.-Descargar jentkins
+2.-https://updates.jenkins-ci.org/download/war/
+3.-cmd -->  cd  C:\Users\rodrigo.villanueva.c\Downloads
+4.-->    java  -jar  "jenkins.war"  --httpPort=8086
+5.-- localhost:8086
+6.-te manda la ruta y copias el password donde te lo pide.
+7.-Install suggested plugins.
+8.-Creamos usuario
+9.-user--> Rodrigo
+10.-->La de siempre R mayuscula
+11.-->Listo
+
+Para iniciar donde se cargo jentkins 
+1.-Copiar el ejecutable en c
+2.-jenkins.exe start estando en c
+3.-java  -jar  "jenkins.war"  --httpPort=8086
+
+
+##########Configurar Jentkins#########################
+
+Video 160
+1..-Administrar jentkins
+2.->Global tool Configurations.
+3.-JDK
+4.-COPIAR LA RUTA HASTA EL JDK  C:\Program Files\Java\jdk1.8.0_241
+5.-save
+
+
+Lo mismo ahora con GIT 
+1.-buscar git el ejecutable y copiar la ruta que es: 
+2.-C:/Program Files/Git/bin/git.exe       ojo estan invertidas  quedan asi 
+3.-Listo.
+
+
+Configurar Python variable.
+1.-buscar python la ruta
+2.-C:\Users\rodrigo.villanueva.c\AppData\Local\Programs\Python\Python37
+3.-Con las varibles configuradas para python ok
+4.-Ir a  COnfigurar el Sistema.
+5.-BUSCAR variables de entorno
+6.-Python_Home y se pone   C:\Users\rodrigo.villanueva.c\AppData\Local\Programs\Python\Python37; C:\Users\rodrigo.villanueva.c\AppData\Local\Programs\Python\Python37\Scripts
+7.-Python_Scripts      C:\Users\rodrigo.villanueva.c\AppData\Local\Programs\Python\Python37\Scripts
+ 
+
+
+ 
+######### REPORTES ALLURE ####################
+1.-mANAGER Jentkins
+2.-plugins.
+3.-Buscar Allure  -->lo isntalamos
+4.-https://github.com/etki/allure-cli      -->comando allure ir a Download  esta abajo y descargarlo en ZIP
+5.-Pegarlo en c en una carpeta Allure y copiar la ruta del bin
+6.-C:\Allure\bin
+7.-Ir a Global Configurations.
+8.-Hasta Abajo Allure Commandline
+9.-Nombre Allure y poner la ruta   C:\Allure\bin
+
+
+########Configuración Variables del Proyecto##########
+Set Path=%Python_Home%;%Path%
+Librerias/Lib.bat
+rmdir  /s /q  output
+rmdir  output
+
+La ruta ya como queda despues para ejecutar
+
+#robot -d results  -i CasoUno  .\Excel3.robot
+
+robot --listener allure_robotframework Test
+exit 0
+
+https://github.com/jenkinsci/allure-plugin/issues/205
+
+
+
+-->salida del allure   output/allure
+
+
+
+
+
+
+############# Notas  ##################3
+Notas todos los proyectos deben tener la carpeta Librerias
+
+
+
+#########################################
+Cursod e Jenkins 2
+
+Crear variable de entorno de jenkins
+
+Ejecutar este comando muyimportante
+
+cd  C:\Program Files\Jenkins
+
+java -Dhudson.model.DirectoryBrowserSupport.CSP= -jar "jenkins.war"   #Ojo con el espacio -jar
+
+java -jar jenkins.war --httpPort=8086
+
+java  -jar  "jenkins.war"  --httpPort=8086  -->igual que el primero
+
+-->instalar el plugin robotframework
+--> ir al puerto 8080
+
+
+
+
+########### Importar datos con DATA DRIVER ###############
+
+https://pypi.org/project/robotframework-datadriver/
+
+--> pip install --upgrade robotframework-datadriver
+
+--> pip install --upgrade robotframework-datadriver[XLS]
+
+
+##############JMeeter y Jenkins#########################
+8.-Patrones a Excluir.
+
+.*\.gif
+.*\.png
+.*\.jpg
+.*\.png
+.*\.css
+.*\.js
+
+
+Instalar pligin  Performance  Jmeter
+
+configurar el archivo user de JMeeter
+
+Video--> https://www.youtube.com/watch?v=E02iab7vZyg
+https://www.youtube.com/watch?v=E02iab7vZyg
+
+checar este mañana.   https://www.youtube.com/watch?v=eNbGcjRJpu0
+
+
+
+-->C:\JMETER\Software\apache-jmeter-5.2.1\bin  user.properties
+
+add--> jmeter.save.saveservice.output_format=xml
+
+
+-->PONER EN CONSOLA LA RUTA DEL BIN  cd  C:\JMETER\Software\apache-jmeter-5.2.1\bin
+
+--> jmeter -jjmeter.save.saveservice.output_format=xml -n -t   C:\JMETER\Software\apache-jmeter-5.2.1\bin\pruebas\AMTIF_B1.jmx -l  C:\JMETER\Software\apache-jmeter-5.2.1\bin\report.jtl
+
+
+
+##############Simular curp y rfc #####################
+
+http://webserver01.finatrade.mx/portalempleados/curp.aspx
+
+
+############################################################
+Seleccionar por xpath
+
+//input[@type='submit']  -->Selecciona un boton de tipo submit
+
+//input[@name='name']  -->busca por el atributo del nombre
+
+//input[@name='firstname' or @arial-labe='first-name'] -->busca por los dos Atributos
+
+//select[@name='elemnto' or @class='por clase'] --> Ahora es un select por multiples atributos
+
+//select[@name='elemnto' and @class='por clase'] -->tiene que tener los dos
+
+//div[text()='texto contenido']-->selecciona un div por el texto
+
+//div[text()='texto contenido']-->selecciona un div por el texto
+
+//a[text()='link texto']-->Selecciona el texto de un link
+
