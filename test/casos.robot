@@ -442,6 +442,77 @@ Prueba if
 
 
 
+Citas paso_uno
+    Esperar Iniciar Forzar    10
+    [Arguments]     ${arg1}     ${arg2}
+    Esperar Iniciar ok    5
+    Dormir Todos  ${tiempo}
+    Abrir navegador  ${arg1}   ${arg2}  
+    Maximizar
+
+Happy path
+    ${rows}=   Leer numero de filas  Hoja1
+    : FOR  ${i}  IN RANGE     1  ${rows}+1  
+    \   ${combo}=   Leer celda  Hoja1  ${i}  1
+    \   ${calendario}=   Leer celda  Hoja1  ${i}  2
+    \   ${horario}=   Leer celda  Hoja1  ${i}  3
+    \   ${fiscal}=   Leer celda  Hoja1  ${i}  4
+    \   ${curp}=   Leer celda  Hoja1  ${i}  5
+    \   ${rfc}=   Leer celda  Hoja1  ${i}  6
+    \   ${nom}=   Leer celda  Hoja1  ${i}  7
+    \   ${ap}=   Leer celda  Hoja1  ${i}  8
+    \   ${am}=   Leer celda  Hoja1  ${i}  9
+    \   ${lada}=   Leer celda  Hoja1  ${i}  10
+    \   ${telefono}=   Leer celda  Hoja1  ${i}  11
+    \   ${gmail}=   Leer celda  Hoja1  ${i}  12
+    \   ${contenido}=   Leer celda  Hoja1  ${i}  13
+    \   Scroll  0  400
+    \   Click  //div[@class='placeholder'][contains(.,'Selecciona una opción...')]
+    \   Dormir  4
+    \   Click    /html/body/app-root/app-inicio/main/div/form/div[2]/div/div/ng-select/select-dropdown/div/div[2]/ul/li[${combo}]/span  #cambiar el 5 final
+    \   Dormir  2
+    \   Click  //button[@class='btn btn-primary'][contains(.,'Siguiente')]
+    \   Scroll  0  700
+    \   Dormir  4
+    \   Click  //span[contains(.,'${calendario}')]     #Calendario
+    \   Dormir  4
+    \   SLI  //select[contains(@id,'seccion')]      3  #el indice modal hora
+    \   Dormir  2
+    \   Click  //button[@class='btn btn-primary'][contains(.,'Aceptar')]
+    \   Click  //button[@class='btn btn-primary'][contains(.,'Siguiente')]
+    \   Dormir  1
+    \   Scroll  0  700
+    \   SLI  //select[contains(@class,'form-control ng-untouched ng-pristine ng-invalid')]  1      #FISICA O MODAL
+    # # curp PECJ770709HDFRHN09
+    # #rfc PECJ770709TL9
+    \   Texto   //input[contains(@id,'curp')]       ${curp}
+    \   Texto  //input[contains(@formcontrolname,'rfc')]    ${rfc}
+    \   Texto  //input[contains(@id,'nombre')]      ${nom}
+    \   Texto  //input[contains(@id,'primerApellido')]      ${ap}
+    \   Texto   //input[contains(@id,'segundoApellido')]    ${am}
+    \   Scroll  0  900
+    \   Texto  //input[contains(@id,'claveLada')]  ${lada}
+    \   Texto  //input[contains(@id,'telefono')]   ${telefono}
+    \   Texto   //input[contains(@id,'correoElectronico')]  ${gmail}
+    \   Texto  //input[contains(@id,'observaciones')]  ${contenido}
+    \   Dormir  2
+    #\   Click  //button[@class='btn btn-primary'][contains(.,'Siguiente')]
+    \   Go To   http://10.16.3.36:8005/inicio
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+    
 
 
 

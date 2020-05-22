@@ -206,7 +206,7 @@ Resultado
 
 Tabulador
     [Arguments]     ${key}
-    Press Keys    ${key}    TAB
+    Press Keys    ${key}    
 
 
 
@@ -250,12 +250,14 @@ Mause down
 ############ Opciones del Teclado #############
 Texto enter
     [Arguments]   ${xpath}   
-    Press Key     ${xpath}    \\13
+    Press Key    ${xpath}    \\13
 
 
 Texto tab
     [Arguments]   ${xpath}   
     Press Key     ${xpath}    \\9
+
+
 
 ##############################################
 
